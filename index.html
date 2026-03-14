@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Top Up Center - Free Fire Diamond Top-Up Service by Sandalu">
+    <meta name="keywords" content="Free Fire, diamonds, top up, gaming, Garena, Sandalu, Sri Lanka">
+    <title>Top Up Center | Top Up With Sandalu</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables - Free Fire Theme */
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-darker: #050508;
+            --bg-card: #151520;
+            --bg-glass: rgba(255, 107, 53, 0.05);
+            --accent-orange: #ff6b35;
+            --accent-yellow: #fbbf24;
+            --accent-gold: #ffd700;
+            --accent-red: #ef4444;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --border-orange: rgba(255, 107, 53, 0.3);
+            --glow-orange: 0 0 30px rgba(255, 107, 53, 0.6);
+            --glow-yellow: 0 0 30px rgba(251, 191, 36, 0.5);
+            --gradient-fire: linear-gradient(135deg, #ff6b35 0%, #fbbf24 50%, #ff6b35 100%);
+            --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+            animation: bgPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* Grid Pattern */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 107, 53, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float 15s infinite;
+            box-shadow: 0 0 10px var(--accent-orange);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-orange);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 107, 53, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 107, 53, 0.8)); }
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-fire);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+            text-shadow: 0 0 10px rgba(255, 107, 53, 0.5);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff6b35" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: bottom;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: rgba(255, 107, 53, 0.15);
+            border: 2px solid var(--accent-orange);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: badgePulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 60px rgba(255, 107, 53, 0.3);
+            animation: titleFlicker 4s infinite;
+        }
+
+        @keyframes titleFlicker {
+            0%, 100% { opacity: 1; }
+            5% { opacity: 0.8; }
+            10% { opacity: 1; }
+            15% { opacity: 0.9; }
+            20% { opacity: 1; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .hero-note {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid var(--accent-yellow);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            color: var(--accent-yellow);
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-fire);
+            color: var(--bg-dark);
+            box-shadow: var(--glow-orange);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-orange);
+            border: 2px solid var(--accent-orange);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-orange);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--glow-orange);
+        }
+
+        .btn-small {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border-orange);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--accent-orange);
+            color: var(--bg-dark);
+            border-color: var(--accent-orange);
+            box-shadow: var(--glow-orange);
+        }
+
+        /* Diamond Packages */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-orange);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            transform-style: preserve-3d;
+        }
+
+        .package-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-fire);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .package-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-orange), transparent 30%);
+            animation: rotate 4s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-orange);
+            box-shadow: var(--glow-orange);
+        }
+
+        .package-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .package-card:hover::after {
+            opacity: 0.1;
+        }
+
+        .package-card.selected {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.6);
+            transform: scale(1.05);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--gradient-gold);
+            color: var(--bg-dark);
+            padding: 0.4rem 3rem;
+            font-size: 0.75rem;
+            font-weight: 900;
+            transform: rotate(45deg);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+            z-index: 2;
+        }
+
+        .package-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .package-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        .package-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--accent-orange);
+            color: var(--accent-orange);
+            border-radius: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+
+        .package-card:hover .btn-buy {
+            background: var(--accent-orange);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        /* Order Form */
+        .order-section {
+            background: var(--bg-card);
+            border-radius: 30px;
+            padding: 3.5rem;
+            border: 2px solid var(--border-orange);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-fire);
+            border-radius: 30px;
+            opacity: 0.3;
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        .payment-notice {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid var(--accent-orange);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .payment-notice i {
+            font-size: 2rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-notice h4 {
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .payment-notice p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--accent-orange);
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group label i {
+            color: var(--accent-yellow);
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 1.2rem;
+            background: var(--bg-dark);
+            border: 2px solid var(--border-orange);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .error-message {
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+            font-weight: 600;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: var(--accent-red);
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .form-group.error .error-message {
+            display: flex;
+        }
+
+        /* How It Works */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-orange);
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-orange);
+            box-shadow: var(--glow-orange);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-fire);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--bg-dark);
+            margin: 0 auto 1.5rem;
+            box-shadow: var(--glow-orange);
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-orange);
+            animation: pulseRing 2s infinite;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .step-card h3 {
+            color: var(--accent-yellow);
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .step-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 2px solid var(--border-orange);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-fire);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-orange);
+            box-shadow: var(--glow-orange);
+        }
+
+        .contact-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-fire);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: var(--bg-dark);
+            box-shadow: var(--glow-orange);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .contact-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+        }
+
+        .contact-features {
+            list-style: none;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .contact-features li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-features li i {
+            color: var(--accent-yellow);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-card);
+            border-top: 2px solid var(--border-orange);
+            padding: 4rem 5%;
+            margin-top: 6rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-fire);
+            box-shadow: var(--glow-orange);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            background: var(--gradient-fire);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .footer-logo i {
+            font-size: 3rem;
+        }
+
+        .footer-tagline {
+            color: var(--accent-yellow);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            background: var(--bg-dark);
+            border: 2px solid var(--border-orange);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-fire);
+            transform: translateY(100%);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .social-links a:hover {
+            color: var(--bg-dark);
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .social-links a:hover::before {
+            transform: translateY(0);
+        }
+
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-info {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-top: 2rem;
+        }
+
+        .admin-name {
+            color: var(--accent-orange);
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--bg-card);
+            border: 2px solid var(--accent-orange);
+            border-left: 5px solid var(--accent-orange);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--glow-orange);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(400px);
+            transition: var(--transition);
+            z-index: 3000;
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+        }
+
+        .toast-content h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .toast-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-150%);
+                transition: var(--transition);
+                border-bottom: 2px solid var(--border-orange);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-section {
+                padding: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-orange);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-orange);
+            border-radius: 6px;
+            border: 3px solid var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-yellow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-animation"></div>
+    <div class="bg-grid"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-fire"></i>
+                Top Up Center
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#order">Order</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-bolt"></i>
+                <span>Instant Delivery</span>
+            </div>
+            <h1>Top Up Center</h1>
+            <p class="hero-subtitle">Top Up With Sandalu</p>
+            <p class="hero-description">
+                Sri Lanka's #1 Free Fire diamond top-up service. 
+                Best prices, instant delivery, and 24/7 support.
+                Trusted by thousands of players island-wide.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#packages" class="btn btn-primary">
+                    <i class="fas fa-gem"></i>
+                    Buy Diamonds
+                </a>
+                <a href="https://whatsapp.com/channel/0029VbCPPG22ER6ddI9FQU2Y" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i>
+                    Join Group
+                </a>
+            </div>
+            <div class="hero-note">
+                <i class="fas fa-info-circle"></i>
+                All payments processed via WhatsApp for your security
+            </div>
+        </div>
+    </section>
+
+    <!-- Diamond Packages -->
+    <section id="packages">
+        <div class="section-header">
+            <h2>Select Your Package</h2>
+            <p>Choose from diamonds, memberships, or level up passes</p>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterPackages('all')">All Packages</button>
+            <button class="tab-btn" onclick="filterPackages('diamonds')">💎 Diamonds</button>
+            <button class="tab-btn" onclick="filterPackages('weekly')">📅 Weekly/Monthly</button>
+            <button class="tab-btn" onclick="filterPackages('evo')">🔥 Evo Access</button>
+            <button class="tab-btn" onclick="filterPackages('level')">⬆️ Level Up</button>
+        </div>
+
+        <div class="packages-grid" id="packagesGrid">
+            <!-- Package cards will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section id="order">
+        <div class="section-header">
+            <h2>Place Your Order</h2>
+            <p>Complete the form and we'll contact you on WhatsApp</p>
+        </div>
+
+        <div class="order-section">
+            <!-- Payment Notice -->
+            <div class="payment-notice">
+                <i class="fab fa-whatsapp"></i>
+                <h4>Payment via WhatsApp Only</h4>
+                <p>After submitting your order, add us on WhatsApp immediately to complete payment and receive your diamonds instantly!</p>
+            </div>
+
+            <form id="orderForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="playerId">
+                            <i class="fas fa-id-card"></i>
+                            Player ID *
+                        </label>
+                        <input type="text" id="playerId" name="playerId" placeholder="Enter your Free Fire ID (8-12 digits)" required>
+                        <span class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter a valid Player ID (8-12 digits)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="playerName">
+                            <i class="fas fa-user"></i>
+                            Player Name *
+                        </label>
+                        <input type="text" id="playerName" name="playerName" placeholder="Enter your nickname" required>
+                        <span class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please enter your Player Name (min 3 characters)
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="package">
+                            <i class="fas fa-gem"></i>
+                            Select Package *
+                        </label>
+                        <select id="package" name="package" required>
+                            <option value="">Choose your package...</option>
+                        </select>
+                        <span class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please select a package
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="payment">
+                            <i class="fas fa-wallet"></i>
+                            Payment Method *
+                        </label>
+                        <select id="payment" name="payment" required>
+                            <option value="">Select Payment...</option>
+                            <option value="whatsapp">💬 WhatsApp (Primary)</option>
+                            <option value="bank">🏦 Bank Transfer</option>
+                            <option value="ezcash">💰 Ez Cash</option>
+                            <option value="crypto">₿ Binance/Crypto</option>
+                        </select>
+                        <span class="error-message">
+                            <i class="fas fa-exclamation-circle"></i>
+                            Please select payment method
+                        </span>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email (Optional)
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="For order confirmation">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.2rem;">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Order & Contact WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Get your diamonds in 4 simple steps</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Enter Player ID</h3>
+                <p>Provide your Free Fire Player ID and nickname for verification</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Choose Package</h3>
+                <p>Select from diamonds, weekly passes, evo access, or level up</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>WhatsApp Payment</h3>
+                <p>Submit order and pay securely via WhatsApp</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Instant Delivery</h3>
+                <p>Receive your diamonds/items instantly in your game</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header">
+            <h2>Contact Support</h2>
+            <p>24/7 Support - We're always here to help!</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp Direct</h3>
+                <p>Fastest support for orders and inquiries</p>
+                <ul class="contact-features">
+                    <li><i class="fas fa-check"></i> Instant Response</li>
+                    <li><i class="fas fa-check"></i> Payment Processing</li>
+                    <li><i class="fas fa-check"></i> Order Tracking</li>
+                    <li><i class="fas fa-check"></i> 24/7 Available</li>
+                </ul>
+                <a href="https://api.whatsapp.com/send?phone=94789913811&text=I%20Want%20to%20pay%20Free%20Fire%20Gems%20Payment%20%20%E2%AC%87%EF%B8%8F%E2%AC%87%EF%B8%8F%0ABank%20%F0%9F%92%B0%F0%9F%92%B8%0AEz%20Cash%20%F0%9F%92%B0%F0%9F%92%B8%0ABinance%20or%20Crypto%20%F0%9F%92%B0%F0%9F%92%B8" target="_blank" class="btn btn-primary btn-small">
+                    <i class="fab fa-whatsapp"></i> Chat Now
+                </a>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>WhatsApp Group</h3>
+                <p>Join our community for updates & giveaways</p>
+                <ul class="contact-features">
+                    <li><i class="fas fa-check"></i> Daily Promotions</li>
+                    <li><i class="fas fa-check"></i> Giveaway Alerts</li>
+                    <li><i class="fas fa-check"></i> Community Support</li>
+                    <li><i class="fas fa-check"></i> Exclusive Deals</li>
+                </ul>
+                <a href="https://whatsapp.com/channel/0029VbCPPG22ER6ddI9FQU2Y" target="_blank" class="btn btn-secondary btn-small">
+                    <i class="fas fa-users"></i> Join Group
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-fire"></i>
+                Top Up Center
+            </div>
+            <p class="footer-tagline">Top Up With Sandalu - Sri Lanka's #1 Free Fire Top-Up</p>
+            
+            <div class="social-links">
+                <a href="https://api.whatsapp.com/send?phone=94789913811&text=I%20Want%20to%20pay%20Free%20Fire%20Gems%20Payment%20%20%E2%AC%87%EF%B8%8F%E2%AC%87%EF%B8%8F%0ABank%20%F0%9F%92%B0%F0%9F%92%B8%0AEz%20Cash%20%F0%9F%92%B0%F0%9F%92%B8%0ABinance%20or%20Crypto%20%F0%9F%92%B0%F0%9F%92%B8" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029VbCPPG22ER6ddI9FQU2Y" target="_blank" aria-label="WhatsApp Group">
+                    <i class="fas fa-users"></i>
+                </a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+
+            <div class="footer-info">
+                <p>Admin: <span class="admin-name">Sandalu</span> | Sri Lanka</p>
+                <p class="copyright">
+                    &copy; 2026 Top Up Center. All rights reserved. | 
+                    Free Fire is a trademark of Garena. Independent service.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle toast-icon"></i>
+        <div class="toast-content">
+            <h4 id="toastTitle">Success!</h4>
+            <p id="toastMessage">Your order has been submitted.</p>
+        </div>
+    </div>
+
+    <script>
+        // All Packages Data with Categories
+        const packages = [
+            // Weekly/Monthly
+            { id: 1, name: "Weekly Lite", price: 130, category: "weekly", icon: "📅", desc: "7 Days Lite Pass" },
+            { id: 2, name: "Weekly", price: 550, category: "weekly", icon: "📅", desc: "7 Days Full Pass", popular: true },
+            { id: 3, name: "Monthly", price: 2600, category: "weekly", icon: "📅", desc: "30 Days Pass" },
+            { id: 4, name: "3 Monthly", price: 7900, category: "weekly", icon: "📅", desc: "90 Days Pass" },
+            { id: 5, name: "5 Monthly", price: 13400, category: "weekly", icon: "📅", desc: "150 Days Pass" },
+            
+            // Special Packs
+            { id: 6, name: "Little Pack", price: 1320, category: "weekly", icon: "🎁", desc: "Starter Pack" },
+            { id: 7, name: "VIP Pack", price: 3130, category: "weekly", icon: "👑", desc: "VIP Benefits" },
+            { id: 8, name: "VIP Special", price: 3300, category: "weekly", icon: "👑", desc: "Special VIP Deal", popular: true },
+            { id: 9, name: "Big Pack", price: 4700, category: "weekly", icon: "💎", desc: "Mega Value Pack" },
+            { id: 10, name: "Super VIP", price: 6250, category: "weekly", icon: "👑", desc: "Ultimate VIP" },
+            
+            // Evo Access
+            { id: 11, name: "Evo 3 Days", price: 210, category: "evo", icon: "🔥", desc: "3 Days Evo Access" },
+            { id: 12, name: "Evo 7 Days", price: 300, category: "evo", icon: "🔥", desc: "7 Days Evo Access" },
+            { id: 13, name: "Evo 30 Days", price: 900, category: "evo", icon: "🔥", desc: "30 Days Evo Access", popular: true },
+            
+            // Level Up Pass
+            { id: 14, name: "Level 6+", price: 170, category: "level", icon: "⬆️", desc: "Level 6+ Pass" },
+            { id: 15, name: "Level 10+", price: 280, category: "level", icon: "⬆️", desc: "Level 10+ Pass" },
+            { id: 16, name: "Level 15+", price: 280, category: "level", icon: "⬆️", desc: "Level 15+ Pass" },
+            { id: 17, name: "Level 20+", price: 280, category: "level", icon: "⬆️", desc: "Level 20+ Pass" },
+            { id: 18, name: "Level 25+", price: 280, category: "level", icon: "⬆️", desc: "Level 25+ Pass" },
+            { id: 19, name: "Level 30+", price: 350, category: "level", icon: "⬆️", desc: "Level 30+ Pass", popular: true },
+            
+            // Diamonds
+            { id: 20, name: "25 Diamonds", price: 100, category: "diamonds", icon: "💎", desc: "Quick Top Up" },
+            { id: 21, name: "100 Diamonds", price: 320, category: "diamonds", icon: "💎", desc: "Small Pack" },
+            { id: 22, name: "310 Diamonds", price: 920, category: "diamonds", icon: "💎", desc: "Popular Choice", popular: true },
+            { id: 23, name: "520 Diamonds", price: 1500, category: "diamonds", icon: "💎", desc: "Best Value" },
+            { id: 24, name: "1060 Diamonds", price: 2920, category: "diamonds", icon: "💎", desc: "Mega Pack" },
+            { id: 25, name: "2180 Diamonds", price: 5900, category: "diamonds", icon: "💎", desc: "Ultra Pack" },
+            { id: 26, name: "5600 Diamonds", price: 14750, category: "diamonds", icon: "💎", desc: "Monster Pack" },
+            { id: 27, name: "11500 Diamonds", price: 30500, category: "diamonds", icon: "💎", desc: "Ultimate Pack" }
+        ];
+
+        // WhatsApp Links
+        const WHATSAPP_DIRECT = "https://api.whatsapp.com/send?phone=94789913811&text=I%20Want%20to%20pay%20Free%20Fire%20Gems%20Payment%20%20%E2%AC%87%EF%B8%8F%E2%AC%87%EF%B8%8F%0ABank%20%F0%9F%92%B0%F0%9F%92%B8%0AEz%20Cash%20%F0%9F%92%B0%F0%9F%92%B8%0ABinance%20or%20Crypto%20%F0%9F%92%B0%F0%9F%92%B8";
+        const WHATSAPP_GROUP = "https://whatsapp.com/channel/0029VbCPPG22ER6ddI9FQU2Y";
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            renderPackages('all');
+            populatePackageSelect();
+            setupEventListeners();
+            setupNavbar();
+        });
+
+        // Create Floating Particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Filter Packages by Category
+        function filterPackages(category) {
+            // Update active tab
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Render filtered packages
+            renderPackages(category);
+        }
+
+        // Render Packages
+        function renderPackages(category) {
+            const grid = document.getElementById('packagesGrid');
+            const filtered = category === 'all' ? packages : packages.filter(p => p.category === category);
+            
+            grid.innerHTML = filtered.map(pkg => `
+                <div class="package-card ${pkg.popular ? 'popular' : ''}" data-id="${pkg.id}" onclick="selectPackage(${pkg.id})">
+                    ${pkg.popular ? '<div class="popular-tag">POPULAR</div>' : ''}
+                    <div class="package-icon">${pkg.icon}</div>
+                    <div class="package-name">${pkg.name}</div>
+                    <div class="package-desc">${pkg.desc}</div>
+                    <div class="package-price">LKR ${pkg.price}<span> only</span></div>
+                    <button class="btn-buy" onclick="event.stopPropagation(); selectPackage(${pkg.id})">
+                        Select Package
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Populate Package Select Dropdown
+        function populatePackageSelect() {
+            const select = document.getElementById('package');
+            const categories = {
+                diamonds: '💎 Diamonds',
+                weekly: '📅 Memberships',
+                evo: '🔥 Evo Access',
+                level: '⬆️ Level Up'
+            };
+            
+            // Group by category
+            Object.keys(categories).forEach(cat => {
+                const group = document.createElement('optgroup');
+                group.label = categories[cat];
+                
+                packages.filter(p => p.category === cat).forEach(pkg => {
+                    const option = document.createElement('option');
+                    option.value = pkg.id;
+                    option.textContent = `${pkg.name} - LKR ${pkg.price}`;
+                    group.appendChild(option);
+                });
+                
+                select.appendChild(group);
+            });
+        }
+
+        // Select Package
+        function selectPackage(id) {
+            const pkg = packages.find(p => p.id === id);
+            if (!pkg) return;
+            
+            // Remove previous selection
+            document.querySelectorAll('.package-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Add selection to clicked card
+            const selectedCard = document.querySelector(`[data-id="${id}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+            
+            // Update form select
+            document.getElementById('package').value = id;
+            
+            // Scroll to form
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+            
+            showToast('Package Selected', `${pkg.name} - LKR ${pkg.price} selected. Complete your order below.`);
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            // Mobile Menu Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileToggle.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close mobile menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                });
+            });
+
+            // Form Submission
+            const form = document.getElementById('orderForm');
+            form.addEventListener('submit', handleOrderSubmit);
+
+            // Sync package select with cards
+            const packageSelect = document.getElementById('package');
+            packageSelect.addEventListener('change', (e) => {
+                const id = parseInt(e.target.value);
+                if (id) {
+                    document.querySelectorAll('.package-card').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    const card = document.querySelector(`[data-id="${id}"]`);
+                    if (card) {
+                        card.classList.add('selected');
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            });
+        }
+
+        // Navbar Scroll Effect
+        function setupNavbar() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(10, 10, 15, 0.98)';
+                    navbar.style.boxShadow = '0 4px 30px rgba(255, 107, 53, 0.3)';
+                } else {
+                    navbar.style.background = 'rgba(10, 10, 15, 0.9)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        // Handle Order Submission
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            
+            // Reset errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+
+            let isValid = true;
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            const pkg = packages.find(p => p.id == data.package);
+
+            // Validate Player ID (8-12 digits)
+            if (!data.playerId || !/^\d{8,12}$/.test(data.playerId)) {
+                showFieldError('playerId', 'Please enter a valid Player ID (8-12 digits)');
+                isValid = false;
+            }
+
+            // Validate Player Name
+            if (!data.playerName || data.playerName.length < 3) {
+                showFieldError('playerName', 'Please enter your nickname (min 3 characters)');
+                isValid = false;
+            }
+
+            // Validate Package
+            if (!data.package || !pkg) {
+                showFieldError('package', 'Please select a package');
+                isValid = false;
+            }
+
+            // Validate Payment
+            if (!data.payment) {
+                showFieldError('payment', 'Please select a payment method');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulate order processing
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                const originalContent = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span class="loading"></span> Processing...';
+                submitBtn.disabled = true;
+
+                // Create order message
+                const orderMessage = `🎮 *NEW ORDER - Top Up Center*
+
+📋 *Order Details:*
+• Player ID: ${data.playerId}
+• Player Name: ${data.playerName}
+• Package: ${pkg.name}
+• Price: LKR ${pkg.price}
+• Payment: ${data.payment.toUpperCase()}
+• Email: ${data.email || 'Not provided'}
+
+⚡ *Status:* Pending Payment
+⏰ *Time:* ${new Date().toLocaleString()}
+
+Please confirm this order and send payment instructions.`;
+
+                setTimeout(() => {
+                    // Open WhatsApp with order details
+                    const whatsappUrl = WHATSAPP_DIRECT + "%0A%0A" + encodeURIComponent(orderMessage);
+                    window.open(whatsappUrl, '_blank');
+                    
+                    showToast('Order Submitted!', 'Opening WhatsApp... Add us and complete your payment instantly!');
+                    e.target.reset();
+                    
+                    // Clear package selection
+                    document.querySelectorAll('.package-card').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    
+                    submitBtn.innerHTML = originalContent;
+                    submitBtn.disabled = false;
+                }, 1500);
+            }
+        }
+
+        // Show Field Error
+        function showFieldError(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            const formGroup = field.closest('.form-group');
+            formGroup.classList.add('error');
+            const errorSpan = formGroup.querySelector('.error-message');
+            errorSpan.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        }
+
+        // Toast Notification
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
